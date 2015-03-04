@@ -9,10 +9,12 @@
         <div class="panel panel-primary">
             <div class="panel-heading">Address</div>
             <div class="panel-body" style="overflow-x:hidden; height:400px">
-                @foreach(var item in Model)
-                {
-                    <p>@item.OrderID</p>
-                }
+                <table class="table-striped table-condensed" id="ordersTbl">
+                    @foreach (var item in Model)
+                    {
+                        <tr style="cursor:pointer"><td>@item.OrderID</td></tr>
+                    }
+                </table>
             </div>
         </div>
     </div>
@@ -23,3 +25,10 @@
        <div class="gmap"></div>
     </div>
 </div>
+
+<script>
+    $(function () {
+
+    });
+
+</script>

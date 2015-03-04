@@ -33,3 +33,4 @@ C:\Users\Dan\Documents\GitHub\RAD302\Rad302CA\Rad302CA\bin\System.Web.WebPages.R
 C:\Users\Dan\Documents\GitHub\RAD302\Rad302CA\Rad302CA\bin\Antlr3.Runtime.pdb
 C:\Users\Dan\Documents\GitHub\RAD302\Rad302CA\Rad302CA\obj\Debug\Rad302CA.dll
 C:\Users\Dan\Documents\GitHub\RAD302\Rad302CA\Rad302CA\obj\Debug\Rad302CA.pdb
+C:\Users\Dan\Documents\GitHub\RAD302\Rad302CA\Rad302CA\obj\Debug\Rad302CA.csprojResolveAssemblyReference.cache
