@@ -12,14 +12,17 @@
                 <table class="table-striped table-condensed" id="ordersTbl">
                     @foreach (var item in Model)
                     {
-                        <tr style="cursor:pointer"><td>@item.OrderID</td></tr>
+                        <tr style="cursor:pointer" id="@item.OrderID"><td>@item.OrderID</td></tr>
                     }
                 </table>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-   
+   <div class="panel panel-primary">
+       <div class="panel-heading">Shipping Address</div>
+       <div class="panel-body" id="ordaddr"></div>
+   </div>
     </div>
     <div class="col-md-6">
        <div class="gmap"></div>
@@ -28,7 +31,23 @@
 
 <script>
     $(function () {
-
-    });
+        $('table tr').click(function () {
+            var id = this.id;
+            $.ajax({
+                type: "GET",
+                url: '/api/ord/getordaddr' + id,
+                contentType: "text/plain; charset-utf-8",
+                data: id,
+                dataType: "json",
+                success: function (data) {
+                    $('ordaddr').empty();
+                    $('ordaddr').append(data.street+'<br>');
+                    $('ordaddr').append(data.city + '<br>');
+                    $('ordaddr').append(data.country);
+                }
+            });
+        }
+        );//end click event handler
+    });//end ready()
 
 </script>

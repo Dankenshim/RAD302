@@ -43,7 +43,7 @@ namespace Rad302CA.Controllers
             {
                 return NotFound();
             }
-            return Ok(ord.ShipCity);
+             return Ok(new { street = ord.ShipAddress, city = ord.ShipCity, country = ord.ShipCountry });
         }
 
         // PUT: api/Orders/5
