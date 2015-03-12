@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Rad302CA.Models.Order>
+@model IEnumerable<Rad302CA.Models.Country>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3ldNRjmXoHY8Hm_QtVfp4Ea-XESGa-3o&sensor=false"></script>
 <script>
     var geocoder;
@@ -57,7 +58,7 @@
 <div class="row">
     <div class="col-md-2">
         <div class="panel panel-primary">
-            <div class="panel-heading">Address</div>
+            <div class="panel-heading">Country</div>
             <div class="panel-body" style="overflow-x:hidden; height:400px">
                 <table class="table-striped table-condensed" id="ordersTbl">
                     @foreach (var item in Model)
@@ -75,6 +76,7 @@
         </div>
     </div>
     <div class="col-md-6">
+        <div id=""></div>
         <div id="gmap" style="width:500px;height:500px"></div>
     </div>
 </div>
