@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Rad302CA.Models.Order>
-@model IEnumerable<Rad302CA.Models.Country>
+﻿@model IEnumerable<Rad302CA.Models.Country>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3ldNRjmXoHY8Hm_QtVfp4Ea-XESGa-3o&sensor=false"></script>
 <script>
     var geocoder;
@@ -10,13 +9,13 @@
             var id = this.id;
             $.ajax({
                 type: "GET",
-                url: '/api/ord/getordaddr/' + id,
+                url: '/api/cntry/getcntrycities/' + id,
                 contentType: "text/plain; charset-utf-8",
                 data: id,
                 dataType: "json",
                 success: function(data) {
-                    $('#ordaddr').empty().append(data.street + '<br>').append(data.city + '<br>').append(data.country);
-                    geocodeLookUp(JSON.stringify(data));
+                    $('#contrycities').empty().append(data + '<br>');
+                    //geocodeLookUp(JSON.stringify(data));
                 }
             }); 
         }
@@ -63,7 +62,7 @@
                 <table class="table-striped table-condensed" id="ordersTbl">
                     @foreach (var item in Model)
                     {
-                        <tr style="cursor:pointer" id="@item.OrderID"><td>@item.OrderID</td></tr>
+                        <tr style="cursor:pointer" id="@item.CountryId"><td>@item.Name</td></tr>
                     }
                 </table>
             </div>
@@ -71,8 +70,8 @@
     </div>
     <div class="col-md-4">
         <div class="panel panel-primary">
-            <div class="panel-heading">Shipping Address</div>
-            <div class="panel-body" id="ordaddr"></div>
+            <div class="panel-heading">Cities</div>
+            <div class="panel-body" id="contrycities"></div>
         </div>
     </div>
     <div class="col-md-6">

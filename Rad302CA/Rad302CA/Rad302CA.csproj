@@ -160,31 +160,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Models.cs" />
-    <Compile Include="Models\nwModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>nwModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\nwModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>nwModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\nwModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>nwModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Order.cs">
-      <DependentUpon>nwModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,23 +182,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\nwModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>nwModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\nwModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>nwModel.edmx</DependentUpon>
-      <LastGenOutput>nwModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\nwModel.edmx.diagram">
-      <DependentUpon>nwModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\nwModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>nwModel.edmx</DependentUpon>
-      <LastGenOutput>nwModel.cs</LastGenOutput>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

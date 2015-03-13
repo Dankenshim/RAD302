@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -32,7 +33,25 @@ namespace Rad302CA.Models
                     {Name="Washington",
                     Population=7062000}
 
-            }}
+            }},
+             new Country(){Name="Australia", Continent= Continent.Australia, Cities= new List<Cities>()
+                {
+                    new Cities()
+                    {Name ="Perth",
+                        Population = 8406000
+                    }, new Cities()
+                    {Name="Brisbane",
+                    Population=7062000}
+                }},
+                 new Country(){Name="Bazil", Continent= Continent.South_America, Cities= new List<Cities>()
+                {
+                    new Cities()
+                    {Name ="Rio de Janero",
+                        Population = 8406000
+                    }, new Cities()
+                    {Name="Brasilia",
+                    Population=7062000}
+                }}
             };
             countries.ForEach(cntry => context.Countries.Add(cntry));
             context.SaveChanges();
@@ -40,10 +59,10 @@ namespace Rad302CA.Models
             base.Seed(context);
         }
     }
-    class CountryDb : DbContext
+    public class CountryDb : DbContext
     {
         public DbSet<Country> Countries { get; set; }
-        public DbSet<Cities> Capitals { get; set; }
+        public DbSet<Cities> Cities { get; set; }
 
         public CountryDb()
             : base("CountryDbs")
@@ -51,6 +70,7 @@ namespace Rad302CA.Models
     }
     public class Country
     {
+        [Key]
         public int CountryId { get; set; }
         public string Name { get; set; }
         public Continent Continent { get; set; }
@@ -59,6 +79,8 @@ namespace Rad302CA.Models
     }
     public class Cities
     {
+        [Key]
+        public int CityId { get; set; }
         public string Name { get; set; }
         public int Population { get; set; }
         public int CountryId { get; set; }
