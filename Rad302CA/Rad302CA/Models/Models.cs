@@ -13,45 +13,10 @@ namespace Rad302CA.Models
         {
             var countries = new List<Country>()
             {
-                new Country(){Name="Ireland", Continent= Continent.Europe, Cities = new List<Cities>()
-                {
-                    new Cities()
-                    {Name = "Dublin", 
-                        Population = 1273069 
-                    },
-                    new Cities()
-                    { Name = "Sligo",
-                        Population = 20000
-                    }
-                }},
-                new Country(){Name="United States", Continent= Continent.North_America, Cities= new List<Cities>()
-                {
-                    new Cities()
-                    {Name ="New York",
-                        Population = 8406000
-                    }, new Cities()
-                    {Name="Washington",
-                    Population=7062000}
-
-            }},
-             new Country(){Name="Australia", Continent= Continent.Australia, Cities= new List<Cities>()
-                {
-                    new Cities()
-                    {Name ="Perth",
-                        Population = 8406000
-                    }, new Cities()
-                    {Name="Brisbane",
-                    Population=7062000}
-                }},
-                 new Country(){Name="Bazil", Continent= Continent.South_America, Cities= new List<Cities>()
-                {
-                    new Cities()
-                    {Name ="Rio de Janero",
-                        Population = 8406000
-                    }, new Cities()
-                    {Name="Brasilia",
-                    Population=7062000}
-                }}
+                new Country(){Name="Ireland", Continent= "Europe",Population=500000,Capital="Dublin",CapitalPopulation=10000000},
+                new Country(){Name="United States", Continent= "North America",Population=100000000,Capital="Washington", CapitalPopulation=3500000},
+             new Country(){Name="Australia", Continent= "Australia",Population=600000000, Capital="Perth",CapitalPopulation=4000000},
+                 new Country(){Name="Bazil", Continent= "South America",Population =140000000, Capital="Brasilia", CapitalPopulation=5000000}
             };
             countries.ForEach(cntry => context.Countries.Add(cntry));
             context.SaveChanges();
@@ -62,7 +27,7 @@ namespace Rad302CA.Models
     public class CountryDb : DbContext
     {
         public DbSet<Country> Countries { get; set; }
-        public DbSet<Cities> Cities { get; set; }
+     
 
         public CountryDb()
             : base("CountryDbs")
@@ -73,21 +38,12 @@ namespace Rad302CA.Models
         [Key]
         public int CountryId { get; set; }
         public string Name { get; set; }
-        public Continent Continent { get; set; }
-        public virtual List<Cities> Cities { get; set; }
+        public string Continent { get; set; }
+        public int Population { get; set; }
+        public string Capital { get; set; }
+        public int CapitalPopulation { get; set; }
+
 
     }
-    public class Cities
-    {
-        [Key]
-        public int CityId { get; set; }
-        public string Name { get; set; }
-        public int Population { get; set; }
-        public int CountryId { get; set; }
-        public virtual Country Country { get; set; }
-    }
-    public enum Continent
-    {
-        Europe, Africa, Asia, North_America, South_America, Antarctica, Australia
-    }
+  
 }

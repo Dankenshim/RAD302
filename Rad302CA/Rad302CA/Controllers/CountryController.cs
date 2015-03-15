@@ -42,7 +42,7 @@ namespace Rad302CA.Controllers
             {
                 return NotFound();
             }
-            return Ok(new { city = cntry.Cities });
+            return Ok(new {Continent= cntry.Continent,Population = cntry.Population,Capital = cntry.Capital, CapitalPopulation= cntry.CapitalPopulation });
         }      
         
     }

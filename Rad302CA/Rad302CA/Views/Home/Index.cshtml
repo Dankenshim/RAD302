@@ -1,21 +1,21 @@
 ﻿@model IEnumerable<Rad302CA.Models.Country>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3ldNRjmXoHY8Hm_QtVfp4Ea-XESGa-3o&sensor=false"></script>
 <script>
     var geocoder;
     var map;
-    $(function () {
-        
+    $(function () {        
         $('table tr').click(function () {
             var id = this.id;
             $.ajax({
                 type: "GET",
-                url: '/api/cntry/getcntrycities/' + id,
+                url: '/api/cntry/getcitydetails/' + id,
                 contentType: "text/plain; charset-utf-8",
                 data: id,
                 dataType: "json",
                 success: function(data) {
-                    $('#contrycities').empty().append(data + '<br>');
-                    //geocodeLookUp(JSON.stringify(data));
+                    $('#countrycities').empty().append("Capital: " +data.Capital + '<br>').append("Continent: " + data.Continent + '<br>').append("Population: " + data.Population + '<br>').append("Capital Population: " + data.CapitalPopulation);
+                    geocodeLookUp(JSON.stringify(data.Capital));
                 }
             }); 
         }
@@ -58,8 +58,8 @@
     <div class="col-md-2">
         <div class="panel panel-primary">
             <div class="panel-heading">Country</div>
-            <div class="panel-body" style="overflow-x:hidden; height:400px">
-                <table class="table-striped table-condensed" id="ordersTbl">
+            <div class="panel-body" style="overflow-x:hidden; height:200px">
+                <table class="table-striped table-condensed" id="countryTbl">
                     @foreach (var item in Model)
                     {
                         <tr style="cursor:pointer" id="@item.CountryId"><td>@item.Name</td></tr>
@@ -70,13 +70,16 @@
     </div>
     <div class="col-md-4">
         <div class="panel panel-primary">
-            <div class="panel-heading">Cities</div>
-            <div class="panel-body" id="contrycities"></div>
+            <div class="panel-heading">Details</div>
+            <div class="panel-body" id="countrycities">
+            </div>
+            <div class="panel-heading">Weather</div>
+            <div class="panel-body"></div>
         </div>
     </div>
     <div class="col-md-6">
         <div id=""></div>
-        <div id="gmap" style="width:500px;height:500px"></div>
+       <div id="gmap" style="width:500px;height:500px"></div>
     </div>
 </div>
 
